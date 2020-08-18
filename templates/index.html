@@ -15,6 +15,12 @@
         <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{{url_for('static',filename='css/styles.css')}}" rel="stylesheet" />
+    <style>
+    .center {
+        margin: auto;
+        /* padding: 10px; */
+      }
+    </style>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -30,6 +36,7 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Portfolio</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a></li>
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="{{url_for('logs')}}">Logs</a></li>
                     </ul>
                 </div>
             </div>
@@ -114,7 +121,7 @@
             </div>
         </section>
         <!-- About Section-->
-        <section class="page-section bg-primary text-white mb-0" id="about">
+        <section class="page-section center bg-primary text-white mb-0" id="about">
             <div class="container">
                 <!-- About Section Heading-->
                 <h2 class="page-section-heading text-center text-uppercase text-white">About</h2>
@@ -125,9 +132,9 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- About Section Content-->
-                <div class="row">
+                <div class="row center">
                     <!-- <div class="col-lg-1 mr-auto"><p class="lead"></p></div> -->
-                    <div class="col-lg-4 ml-auto"><p class="lead">
+                    <div class=""><p class="lead">
                         <p class="text-center">Hi there, I'm siddhart 👋<br></p>
                         <ul>
                         <li>I'm a Freelancer, Developer, and Teacher!<br></li>
@@ -138,7 +145,7 @@
                         <li>⚡ Fun fact: I love to play badminton.</li>
                         </ul>
                     </div>
-                    <div class="col-lg-2 mr-auto"><p class="lead"></p></div>
+                
                 </div>
             </div>
         </section>

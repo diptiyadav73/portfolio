@@ -32,7 +32,11 @@ class Feedback(db.Model):
 @app.route('/')
 def index():
     return render_template('index.html')
+@app.route('/logs')
+def logs():
+    return render_template('logs.html')
           
 if __name__ == '__main__':
     db.create_all()
-    app.run(threaded=True, port=8000)
+    TEMPLATES_AUTO_RELOAD = True
+    app.run(threaded=True, port=8000,debug=True)
