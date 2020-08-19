@@ -44,10 +44,21 @@ def index():
 
 @app.route('/logs')
 def logs():
-    return render_template('logs.html')
+    data = Logs.query.all()
+    return render_template('logs.html',data=data)
 
 @app.route('/addlogs',methods=['GET','POST'])
 def addlogs():
+    if request.method == 'POST':
+        name = request.form['name']
+        color = request.form['color']
+        date = request.form['date']
+        time = request.form['time']
+        details = request.form['details']
+        data = Logs(name=name,color=color,date=date,time=time,details=details)
+        db.session.add(data)
+        db.session.commit()
+        return redirect(url_for('addlogs'))
     return render_template('addlogs.html')
 
 @app.route('/',methods=['POST'])
