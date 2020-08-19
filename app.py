@@ -23,10 +23,19 @@ engine = create_engine('sqlite:///' + os.path.join(basedir, 'database.db'))
 Session = sessionmaker(bind=engine)
 ses = Session()
 
+class Logs(db.Model):
+    log_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    color = db.Column(db.String(50))
+    date = db.Column(db.String(50))
+    time = db.Column(db.String(50))
+    details = db.Column(db.String(5000))
 
-class Feedback(db.Model):
-    feedback_id = db.Column(db.Integer, primary_key=True)
+class Contact(db.Model):
+    contact_id = db.Column(db.Integer, primary_key=True)
     name  = db.Column(db.String(50))
+    email = db.Column(db.String(50))
+    phone = db.Column(db.String(50))
     msg = db.Column(db.String(5000))
 
 @app.route('/')
@@ -40,6 +49,22 @@ def logs():
 @app.route('/addlogs',methods=['GET','POST'])
 def addlogs():
     return render_template('addlogs.html')
+
+@app.route('/',methods=['POST'])
+def contact():
+    name = request.form['name']
+    phone = request.form['phone']
+    email = request.form['email']
+    msg = request.form['msg']
+    contact = Contact(name=name,email=email,phone=phone,msg=msg)
+    db.session.add(contact)
+    db.session.commit()
+    return redirect(url_for('index'))
+
+@app.route('/contact',methods=['GET'])
+def getcontact():
+    data = Contact.query.all()
+    return render_template('contact.html',data=data)
 
 if __name__ == '__main__':
     db.create_all()
