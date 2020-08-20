@@ -31,6 +31,14 @@ class Logs(db.Model):
     time = db.Column(db.String(50))
     details = db.Column(db.String(5000))
 
+class Todos(db.Model):
+    todos_id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50))
+    color = db.Column(db.String(50))
+    date = db.Column(db.String(50))
+    time = db.Column(db.String(50))
+    details = db.Column(db.String(5000))
+
 class Contact(db.Model):
     contact_id = db.Column(db.Integer, primary_key=True)
     name  = db.Column(db.String(50))
@@ -45,7 +53,8 @@ def index():
 @app.route('/logs')
 def logs():
     data = Logs.query.all()
-    return render_template('logs.html',data=data)
+    datatodos = Todos.query.all()
+    return render_template('logs.html',data=data,datatodos=datatodos)
 
 @app.route('/addlogs',methods=['GET','POST'])
 def addlogs():
@@ -56,6 +65,20 @@ def addlogs():
         time = request.form['time']
         details = request.form['details']
         data = Logs(name=name,color=color,date=date,time=time,details=details)
+        db.session.add(data)
+        db.session.commit()
+        return redirect(url_for('addlogs'))
+    return render_template('addlogs.html')
+
+@app.route('/addtodos',methods=['GET','POST'])
+def addtodos():
+    if request.method == 'POST':
+        name = request.form['name']
+        color = request.form['color']
+        date = request.form['date']
+        time = request.form['time']
+        details = request.form['details']
+        data = Todos(name=name,color=color,date=date,time=time,details=details)
         db.session.add(data)
         db.session.commit()
         return redirect(url_for('addlogs'))
@@ -72,10 +95,10 @@ def contact():
     db.session.commit()
     return redirect(url_for('index'))
 
-@app.route('/contact',methods=['GET'])
+@app.route('/admin',methods=['GET'])
 def getcontact():
     data = Contact.query.all()
-    return render_template('contact.html',data=data)
+    return render_template('admin/admin.html',data=data)
 
 if __name__ == '__main__':
     db.create_all()
