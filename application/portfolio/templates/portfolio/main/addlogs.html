@@ -1,0 +1,132 @@
+{% extends "./portfolio/layout/base.html" %} {% block content %} {% include
+"./portfolio/layout/nevbar.html" %}
+<header class="bg-primary text-center py-2 mb-2"></header>
+
+<div id="page-content">
+  <div class="container ">
+    <div class="row justify-content-center">
+      <div class="col-md-7">
+        <!-- <h1 class="font-weight-light mt-4 text-white">
+              Sticky Footer using Flexbox
+            </h1> -->
+        <br />
+        <div class="card">
+          <div class="card-header">
+            Daily Logs
+          </div>
+          <div class="card-body stuck">
+            <blockquote class="blockquote mb-0">
+              <form method="POST" action="{{url_for('portfolio.addlogs')}}">
+                <input
+                  class="dataform"
+                  name="name"
+                  placeholder="Project"
+                  id="first_name"
+                  type="text"
+                  class="validate"
+                />
+                <input
+                  class="dataform"
+                  name="color"
+                  placeholder="Color"
+                  id="first_name"
+                  type="text"
+                  class="validate"
+                />
+                <input
+                  class="dataform"
+                  name="date"
+                  placeholder="Date"
+                  id="first_name"
+                  type="date"
+                  class="validate"
+                />
+                <input
+                  class="dataform"
+                  name="time"
+                  placeholder="Date"
+                  id="first_name"
+                  type="time"
+                  class="validate"
+                />
+                <textarea
+                  class="dataform"
+                  name="details"
+                  placeholder="Details"
+                  name="details"
+                  rows="4"
+                  cols="50"
+                ></textarea>
+                <button class="btn btn-primary dataform" type="submit">
+                  Submit
+                </button>
+              </form>
+            </blockquote>
+          </div>
+        </div>
+        <br />
+        <div class="card">
+          <div class="card-header">
+            Todo's
+          </div>
+          <div class="card-body stuck">
+            <blockquote class="blockquote mb-0">
+              <form method="POST" action="{{url_for('portfolio.addtodos')}}">
+                <input
+                  class="dataform"
+                  name="name"
+                  placeholder="Project"
+                  id="first_name"
+                  type="text"
+                  class="validate"
+                />
+                <input
+                  class="dataform"
+                  name="color"
+                  placeholder="Color"
+                  id="first_name"
+                  type="text"
+                  class="validate"
+                />
+                <input
+                  class="dataform"
+                  name="date"
+                  placeholder="Date"
+                  id="first_name"
+                  type="date"
+                  class="validate"
+                />
+                <input
+                  class="dataform"
+                  name="time"
+                  placeholder="Date"
+                  id="first_name"
+                  type="time"
+                  class="validate"
+                />
+                <textarea
+                  class="dataform"
+                  name="details"
+                  placeholder="Details"
+                  name="details"
+                  rows="4"
+                  cols="50"
+                ></textarea>
+                <button class="btn btn-primary dataform" type="submit">
+                  Submit
+                </button>
+              </form>
+            </blockquote>
+          </div>
+        </div>
+        <br />
+      </div>
+    </div>
+  </div>
+</div>
+<footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+  <div class="container text-center">
+    <small>Copyright &copy; codewithsidy 2020</small>
+  </div>
+</footer>
+{% endblock %}
