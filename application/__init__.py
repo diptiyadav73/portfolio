@@ -12,6 +12,8 @@ def create_app():
     
     with app.app_context():
         from .portfolio.portfolio import portfolio
+        from .blogs.blogs import blogs
         app.register_blueprint(portfolio)
+        app.register_blueprint(blogs)
         db.create_all()
         return app
