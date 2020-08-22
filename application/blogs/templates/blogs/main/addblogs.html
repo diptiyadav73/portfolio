@@ -1,0 +1,108 @@
+{% extends "./blogs/layout/base.html" %} {% block content %} {% include
+"./blogs/layout/nevbar.html" %}
+<!-- Page Content -->
+<div class="container">
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
+      {% include "./blogs/layout/insidenevbar.html" %}
+    </div>
+  </div>
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
+      <h1 class="font-weight-light">Add blog</h1>
+      <form>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Blog Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Blog Title"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Author</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>-----</option>
+            {% for i in author %}
+            <option>{{i.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Series</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>-----</option>
+            {% for i in series %}
+            <option>{{i.title}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Time</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Time"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Date</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Date"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Blog Tags</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Tags"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Meta Tags</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Meta"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Content</label>
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="10"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlFile1">Image</label>
+          <input
+            type="file"
+            class="form-control-file"
+            id="exampleFormControlFile1"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Meta Tags</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Slug"
+          />
+        </div>
+        <input type="submit" class="btn btn-primary" placeholder="Submit" />
+      </form>
+    </div>
+    <br />
+  </div>
+</div>
+{% endblock %}

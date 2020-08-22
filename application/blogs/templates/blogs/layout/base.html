@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Tada 🎉!!</title>
+    <!-- Favicon-->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{url_for('static',filename='assets/img/favicon.ico')}}"
+    />
+    <!-- Font Awesome icons (free version)-->
+    <script
+      src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Google fonts-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link
+      href="{{url_for('static',filename='css/styles.css')}}"
+      rel="stylesheet"
+    />
+    <style>
+      .center {
+        margin: auto;
+        /* padding: 10px; */
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      #page-content {
+        flex: 1 0 auto;
+        margin-top: 6%;
+      }
+
+      #sticky-footer {
+        flex-shrink: none;
+      }
+
+      /* Other Classes for Page Styling */
+
+      body {
+        background: #e5e7e9;
+        background: linear-gradient(to right, #e5e7e9, #e5e7e9);
+      }
+      .stuck {
+        bottom: 10px;
+        /* width: 299px; */
+        height: 300px;
+        /* background-color: #777777; */
+        overflow-y: scroll;
+      }
+      .formButtonfront {
+        width: 700px;
+        max-width: 100%;
+        /* padding: 15px; */
+      }
+      .dataform {
+        margin-top: 2%;
+      }
+    </style>
+  </head>
+  <body class="d-flex flex-column"></body>
+  {% block content %}{% endblock %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!-- Contact form JS-->
+    <script src="{{url_for('static',filename='assets/mail/jqBootstrapValidation.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/mail/contact_me.js')}}"></script>
+    <!-- Core theme JS-->
+    <script src="{{url_for('static',filename='js/scripts.js')}}"></script>
+  </body>
+</html>

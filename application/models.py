@@ -27,3 +27,34 @@ class Contact(db.Model):
     email = db.Column(db.String(50))
     phone = db.Column(db.String(50))
     msg = db.Column(db.String(5000))
+
+class Blogs(db.Model):
+    __tablename__ = 'blogs'
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100))
+    series = db.Column(db.String(100))
+    author = db.Column(db.String(100))
+    time = db.Column(db.String(100))
+    date = db.Column(db.String(100))
+    tag = db.Column(db.String(100))
+    meta = db.Column(db.String(100))
+    content = db.Column(db.String(100000))
+    img = db.Column(db.String(300))
+    slug = db.Column(db.String(300))
+
+class Series(db.Model):
+    __tablename__ = 'series'
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100))
+    series = db.Column(db.String(100))
+    slug = db.Column(db.String(300))
+
+class Author(db.Model):
+    __tablename__ = 'author'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(300))
+    website = db.Column(db.String(300))
+    quotes = db.Column(db.String(300))
+    slug = db.Column(db.String(300))
+    
+    

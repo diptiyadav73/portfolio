@@ -1,0 +1,37 @@
+{% extends "./blogs/layout/base.html" %} {% block content %} {% include
+"./blogs/layout/nevbar.html" %}
+<!-- Page Content -->
+<div class="container">
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
+      {% include "./blogs/layout/insidenevbar.html" %}
+    </div>
+  </div>
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
+      <h1 class="font-weight-light">Filename</h1>
+      <form>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Blog Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Filename"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlFile1">Image</label>
+          <input
+            type="file"
+            class="form-control-file"
+            id="exampleFormControlFile1"
+          />
+        </div>
+        <input type="submit" class="btn btn-primary" placeholder="Submit" />
+      </form>
+    </div>
+    <br />
+  </div>
+</div>
+{% endblock %}
