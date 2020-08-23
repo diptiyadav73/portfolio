@@ -76,19 +76,8 @@
         </div>
         <div class="form-group">
           <label for="exampleFormControlTextarea1">Content</label>
-          <textarea
-            class="form-control"
-            id="exampleFormControlTextarea1"
-            rows="10"
-          ></textarea>
-        </div>
-        <div class="form-group">
-          <label for="exampleFormControlFile1">Image</label>
-          <input
-            type="file"
-            class="form-control-file"
-            id="exampleFormControlFile1"
-          />
+          <!-- Create the editor container -->
+          <div id="editor" style="height:500px;overflow:auto"></div>
         </div>
         <div class="form-group">
           <label for="exampleFormControlInput1">Meta Tags</label>
@@ -105,4 +94,65 @@
     <br />
   </div>
 </div>
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+<script src="//cdn.rawgit.com/kensnyder/quill-image-resize-module/3411c9a7/image-resize.min.js"></script>
+<!-- Initialize Quill editor -->
+<script>
+  var toolbarOptions = [
+    ["bold", "italic", "underline", "strike"], // toggled buttons
+    ["blockquote", "code-block"],
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ script: "sub" }, { script: "super" }], // superscript/subscript
+    [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+    [{ direction: "rtl" }], // text direction
+    ["image"],
+    [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+
+    [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+    [{ font: [] }],
+    [{ align: [] }],
+
+    ["clean"] // remove formatting button
+  ];
+  var editor = new Quill("#editor", {
+    modules: {
+      imageResize: {
+        displaySize: true
+      },
+      toolbar: toolbarOptions
+    },
+    theme: "snow"
+  });
+
+  editor.on("text-change", function(delta, source) {
+    updateHtmlOutput();
+  });
+
+  // When the convert button is clicked, update output
+  $("#btn-convert").on("click", () => {
+    updateHtmlOutput();
+  });
+
+  // Return the HTML content of the editor
+  function getQuillHtml() {
+    return editor.root.innerHTML;
+  }
+
+  // Highlight code output
+  function updateHighlight() {
+    hljs.highlightBlock(document.querySelector("#output-html"));
+  }
+
+  function updateHtmlOutput() {
+    let html = getQuillHtml();
+    console.log(html);
+    // document.getElementById('output-html').innerText = html;
+    updateHighlight();
+  }
+
+  updateHtmlOutput();
+</script>
+
 {% endblock %}
