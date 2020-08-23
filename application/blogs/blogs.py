@@ -11,7 +11,7 @@ import uuid
 import os
 import urllib.request
 from datetime import datetime
-# from ..models import 
+from ..models import Series,Author
 from werkzeug.utils import secure_filename
 from flask import Blueprint, render_template
 
@@ -24,3 +24,34 @@ blogs = Blueprint('blogs',__name__,
 @blogs.route('/')
 def index():
     return render_template('/blogs/main/index.html')
+
+@blogs.route('/staticupload')
+def staticupload():
+    return render_template('/blogs/main/staticupload.html')
+
+@blogs.route('/author', methods=['POST','GET'])
+def author():
+    if request.method == 'POST':
+        author = Author(name = request.form['name'], website = request.form['website'],quotes = request.form['quotes'],slug = request.form['slug'])
+        db.session.add(author)
+        db.session.commit()
+    author = Author.query.all()
+    return render_template('/blogs/main/author.html', data=author)
+
+@blogs.route('/series', methods=['POST','GET'])
+def series():
+    if request.method == 'POST':
+        series = Series(series = request.form['series'], title = request.form['title'], slug = request.form['slug'])    
+        db.session.add(series)
+        db.session.commit()
+    series = Series.query.all()
+    return render_template('/blogs/main/series.html',data = series)
+
+@blogs.route('/addblog')
+def addblogs():
+    author = Author.query.all()
+    series = Series.query.all()
+    return render_template('/blogs/main/addblogs.html',
+                            author = author,
+                            series = series
+                            )

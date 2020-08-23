@@ -1,0 +1,158 @@
+{% extends "./blogs/layout/base.html" %} {% block content %} {% include
+"./blogs/layout/nevbar.html" %}
+<!-- Page Content -->
+<div class="container">
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
+      {% include "./blogs/layout/insidenevbar.html" %}
+    </div>
+  </div>
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
+      <h1 class="font-weight-light">Add blog</h1>
+      <form>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Blog Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Blog Title"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Author</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>-----</option>
+            {% for i in author %}
+            <option>{{i.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Series</label>
+          <select class="form-control" id="exampleFormControlSelect1">
+            <option>-----</option>
+            {% for i in series %}
+            <option>{{i.title}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Time</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Time"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Date</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Date"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Blog Tags</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Tags"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Meta Tags</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Meta"
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Content</label>
+          <!-- Create the editor container -->
+          <div id="editor" style="height:500px;overflow:auto"></div>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Meta Tags</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="Slug"
+          />
+        </div>
+        <input type="submit" class="btn btn-primary" placeholder="Submit" />
+      </form>
+    </div>
+    <br />
+  </div>
+</div>
+<!-- Include the Quill library -->
+<script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+<script src="//cdn.rawgit.com/kensnyder/quill-image-resize-module/3411c9a7/image-resize.min.js"></script>
+<!-- Initialize Quill editor -->
+<script>
+  var toolbarOptions = [
+    ["bold", "italic", "underline", "strike"], // toggled buttons
+    ["blockquote", "code-block"],
+    [{ list: "ordered" }, { list: "bullet" }],
+    [{ script: "sub" }, { script: "super" }], // superscript/subscript
+    [{ indent: "-1" }, { indent: "+1" }], // outdent/indent
+    [{ direction: "rtl" }], // text direction
+    ["image"],
+    [{ size: ["small", false, "large", "huge"] }], // custom dropdown
+    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+
+    [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+    [{ font: [] }],
+    [{ align: [] }],
+
+    ["clean"] // remove formatting button
+  ];
+  var editor = new Quill("#editor", {
+    modules: {
+      imageResize: {
+        displaySize: true
+      },
+      toolbar: toolbarOptions
+    },
+    theme: "snow"
+  });
+
+  editor.on("text-change", function(delta, source) {
+    updateHtmlOutput();
+  });
+
+  // When the convert button is clicked, update output
+  $("#btn-convert").on("click", () => {
+    updateHtmlOutput();
+  });
+
+  // Return the HTML content of the editor
+  function getQuillHtml() {
+    return editor.root.innerHTML;
+  }
+
+  // Highlight code output
+  function updateHighlight() {
+    hljs.highlightBlock(document.querySelector("#output-html"));
+  }
+
+  function updateHtmlOutput() {
+    let html = getQuillHtml();
+    console.log(html);
+    // document.getElementById('output-html').innerText = html;
+    updateHighlight();
+  }
+
+  updateHtmlOutput();
+</script>
+
+{% endblock %}

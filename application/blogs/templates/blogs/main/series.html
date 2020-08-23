@@ -1,0 +1,110 @@
+{% extends "./blogs/layout/base.html" %} {% block content %} {% include
+"./blogs/layout/nevbar.html" %}
+<!-- Page Content -->
+<div class="container">
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
+      {% include "./blogs/layout/insidenevbar.html" %}
+    </div>
+  </div>
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
+      <h1 class="font-weight-light"></h1>
+      <div class="row">
+        <div class="col-xl-8">
+          <div class="card">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">Series Registration</h3>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <!-- Projects table -->
+              <form
+                method="POST"
+                action="{{url_for('blogs.series')}}"
+                style="padding: 20px;"
+              >
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Series Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Series Name"
+                    name="series"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Title</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Title"
+                    name="title"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Slug</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleFormControlInput1"
+                    placeholder="Slug"
+                    name="slug"
+                  />
+                </div>
+
+                <input
+                  type="submit"
+                  class="btn btn-primary"
+                  placeholder="Submit"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-4">
+          <div class="card">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">All Series's</h3>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <!-- Projects table -->
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Series name</th>
+                    <th scope="col">Title name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in data %}
+
+                  <tr>
+                    <th scope="row">
+                      {{i.series}}
+                    </th>
+                    <td>
+                      {{i.title}}
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+    </div>
+  </div>
+  {% endblock %}
+</div>
