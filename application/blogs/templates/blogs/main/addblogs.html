@@ -13,16 +13,11 @@
       <form>
         <div class="form-group">
           <label for="exampleFormControlInput1">Blog Title</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Blog Title"
-          />
+          <input type="text" class="form-control" id="title" placeholder="Blog Title" />
         </div>
         <div class="form-group">
           <label for="exampleFormControlInput1">Author</label>
-          <select class="form-control" id="exampleFormControlSelect1">
+          <select class="form-control" id="author">
             <option>-----</option>
             {% for i in author %}
             <option>{{i.name}}</option>
@@ -31,7 +26,7 @@
         </div>
         <div class="form-group">
           <label for="exampleFormControlInput1">Series</label>
-          <select class="form-control" id="exampleFormControlSelect1">
+          <select class="form-control" id="series">
             <option>-----</option>
             {% for i in series %}
             <option>{{i.title}}</option>
@@ -40,39 +35,19 @@
         </div>
         <div class="form-group">
           <label for="exampleFormControlInput1">Time</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Time"
-          />
+          <input type="text" class="form-control" id="time" placeholder="Time" />
         </div>
         <div class="form-group">
           <label for="exampleFormControlInput1">Date</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Date"
-          />
+          <input type="text" class="form-control" id="date" placeholder="Date" />
         </div>
         <div class="form-group">
           <label for="exampleFormControlInput1">Blog Tags</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Tags"
-          />
+          <input type="text" class="form-control" id="tags" placeholder="Tags" />
         </div>
         <div class="form-group">
           <label for="exampleFormControlInput1">Meta Tags</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Meta"
-          />
+          <input type="text" class="form-control" id="meta" placeholder="Meta" />
         </div>
         <div class="form-group">
           <label for="exampleFormControlTextarea1">Content</label>
@@ -80,15 +55,11 @@
           <div id="editor" style="height:500px;overflow:auto"></div>
         </div>
         <div class="form-group">
-          <label for="exampleFormControlInput1">Meta Tags</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Slug"
-          />
+          <label for="exampleFormControlInput1">Slug</label>
+          <input type="text" class="form-control" id="slug" placeholder="Slug" />
         </div>
-        <input type="submit" class="btn btn-primary" placeholder="Submit" />
+        <a onclick="mysubmit()" class="btn btn-primary">Save Blogs & View</a>
+        <!-- <input type="submit" class="btn btn-primary" placeholder="Save Blogs" /> -->
       </form>
     </div>
     <br />
@@ -99,6 +70,7 @@
 <script src="//cdn.rawgit.com/kensnyder/quill-image-resize-module/3411c9a7/image-resize.min.js"></script>
 <!-- Initialize Quill editor -->
 <script>
+  let html;
   var toolbarOptions = [
     ["bold", "italic", "underline", "strike"], // toggled buttons
     ["blockquote", "code-block"],
@@ -126,7 +98,7 @@
     theme: "snow"
   });
 
-  editor.on("text-change", function(delta, source) {
+  editor.on("text-change", function (delta, source) {
     updateHtmlOutput();
   });
 
@@ -146,13 +118,52 @@
   }
 
   function updateHtmlOutput() {
-    let html = getQuillHtml();
+    html = getQuillHtml();
     console.log(html);
     // document.getElementById('output-html').innerText = html;
     updateHighlight();
   }
 
   updateHtmlOutput();
+
+
+  function mysubmit() {
+    var title = document.getElementById("title").value
+    var author = document.getElementById("author").value
+    var series = document.getElementById("series").value
+    var time = document.getElementById("time").value
+    var date = document.getElementById("date").value
+    var tags = document.getElementById("tags").value
+    var meta = document.getElementById("meta").value
+    // var editor = document.getElementById("editor").value
+    var slug = document.getElementById("slug").value
+    var blog = {
+      "title": title,
+      "author": author,
+      "series": series,
+      "time": time,
+      "date": date,
+      "tags": tags,
+      "meta": meta,
+      "editor": html,
+      "slug": slug
+    }
+    fetch("/receiver", {
+      method: "POST",
+      body: JSON.stringify(blog),
+      headers: new Headers({
+        "content-type": "application/json"
+      })
+    })
+      .then(function (response) {
+        // At this point, Flask has printed our JSON
+        return response.text();
+      })
+      .then(function (text) {
+        console.log("hasfsf");
+      });
+    console.log(blog);
+  }
 </script>
 
 {% endblock %}
