@@ -57,4 +57,16 @@ class Author(db.Model):
     quotes = db.Column(db.String(300))
     slug = db.Column(db.String(300))
     
-    
+class PreBlogs(db.Model):
+    __tablename__ = 'preblogs'
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100))
+    series = db.Column(db.String(100))
+    author = db.Column(db.String(100))
+    time = db.Column(db.String(100))
+    date = db.Column(db.String(100))
+    tag = db.Column(db.String(100))
+    meta = db.Column(db.String(100))
+    content = db.Column(db.String(100000))
+    img = db.Column(db.String(300))
+    slug = db.Column(db.String(300))

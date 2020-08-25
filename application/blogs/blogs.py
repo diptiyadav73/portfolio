@@ -11,7 +11,7 @@ import uuid
 import os
 import urllib.request
 from datetime import datetime
-from ..models import Series,Author
+from ..models import Series,Author,PreBlogs
 from werkzeug.utils import secure_filename
 from flask import Blueprint, render_template
 
@@ -55,3 +55,15 @@ def addblogs():
                             author = author,
                             series = series
                             )
+@app.route('/receiver', methods=['POST'])
+def receiver():
+    blog = json.dumps(request.json)
+    pre = PreBlogs(title=blog['title'],author=blog['author'],series=blog['series'],time=blog['time'],date=blog['date'],tag=tags['tags'],meta=blog['meta'],editor=blog['editor'],slug=blog['slug'])
+    db.session.add(pre)
+    db.session.commit()
+    return 'OK', 200
+
+@blogs.route('/preblogs', methods=['POST','GET'])
+def preblogs():
+    blog = PreBlogs.query.all()
+    return render_template('/blogs/main/preblogs.html',blogs=blog)

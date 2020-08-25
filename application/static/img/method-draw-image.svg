@@ -1,0 +1,58 @@
+<svg width="200" height="170" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+ <defs>
+  <filter id="svg_38_blur">
+   <feGaussianBlur stdDeviation="0.1" in="SourceGraphic"/>
+  </filter>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="172" width="202" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g filter="url(#svg_38_blur)" id="svg_38">
+   <g transform="matrix(7.261, 0, 0, 7.33434, 3, 0)" id="svg_5">
+    <path id="svg_6" fill="#030104" d="m25.04756,0l-23.374,0c-1.078,0 -1.949,0.868 -1.949,1.946l0,19.481c0,1.074 0.871,1.946 1.949,1.946l23.374,0c1.071,0 1.946,-0.872 1.946,-1.946l0,-19.481c0,-1.078 -0.874,-1.946 -1.946,-1.946zm-16.008,1.463c0.536,0 0.971,0.431 0.971,0.973c0,0.537 -0.435,0.973 -0.971,0.973c-0.538,0 -0.978,-0.436 -0.978,-0.973c0,-0.542 0.44,-0.973 0.978,-0.973zm-2.982,0c0.535,0 0.973,0.431 0.973,0.973c0,0.537 -0.438,0.973 -0.973,0.973c-0.541,0 -0.977,-0.436 -0.977,-0.973c0,-0.542 0.436,-0.973 0.977,-0.973zm-2.925,0c0.539,0 0.974,0.431 0.974,0.973c0,0.537 -0.435,0.973 -0.974,0.973c-0.536,0 -0.972,-0.436 -0.972,-0.973c0,-0.542 0.436,-0.973 0.972,-0.973zm21.915,19.965l-23.374,0l0,-16.537l23.374,0l0,16.537z"/>
+    <rect id="svg_7" fill="#030104" height="16.537" width="23.374" y="4.891" x="1.67356"/>
+    <rect id="svg_8" fill="#030104" height="2.851" width="2.846" y="7.548" x="3.90956"/>
+    <rect id="svg_9" fill="#030104" height="2.851" width="2.847" y="7.548" x="7.95756"/>
+    <rect id="svg_10" fill="#030104" height="2.851" width="2.847" y="7.548" x="11.98456"/>
+    <rect id="svg_11" fill="#030104" height="2.849" width="2.846" y="11.264" x="3.90956"/>
+    <rect id="svg_12" fill="#030104" height="2.849" width="2.847" y="11.264" x="7.95756"/>
+    <rect id="svg_13" fill="#030104" height="2.849" width="2.847" y="11.264" x="11.98456"/>
+    <rect id="svg_14" fill="#030104" height="2.849" width="2.848" y="15.112" x="3.91956"/>
+    <rect id="svg_15" fill="#030104" height="2.849" width="2.845" y="15.112" x="7.97056"/>
+    <rect id="svg_16" fill="#030104" height="2.849" width="2.847" y="15.112" x="11.99556"/>
+    <rect id="svg_17" fill="#030104" height="2.851" width="2.843" y="7.548" x="15.93056"/>
+    <rect id="svg_18" fill="#030104" height="2.851" width="2.846" y="7.548" x="19.95556"/>
+    <rect id="svg_19" fill="#030104" height="2.849" width="2.843" y="11.264" x="15.93056"/>
+    <rect id="svg_20" fill="#030104" height="2.849" width="2.846" y="11.264" x="19.95556"/>
+    <rect id="svg_21" fill="#030104" height="2.849" width="2.846" y="15.112" x="15.93956"/>
+    <rect id="svg_22" fill="#030104" height="2.849" width="2.845" y="15.112" x="19.96756"/>
+   </g>
+   <g transform="matrix(7.261, 0, 0, 7.33434, 3, 0)" id="svg_23"/>
+   <g transform="matrix(7.261, 0, 0, 7.33434, 3, 0)" id="svg_24"/>
+   <g transform="matrix(7.261, 0, 0, 7.33434, 3, 0)" id="svg_25"/>
+   <g transform="matrix(7.261, 0, 0, 7.33434, 3, 0)" id="svg_26"/>
+   <g transform="matrix(7.261, 0, 0, 7.33434, 3, 0)" id="svg_27"/>
+   <g transform="matrix(7.261, 0, 0, 7.33434, 3, 0)" id="svg_28"/>
+   <g transform="matrix(7.261, 0, 0, 7.33434, 3, 0)" id="svg_29"/>
+   <g transform="matrix(7.261, 0, 0, 7.33434, 3, 0)" id="svg_30"/>
+   <g transform="matrix(7.261, 0, 0, 7.33434, 3, 0)" id="svg_31"/>
+   <g transform="matrix(7.261, 0, 0, 7.33434, 3, 0)" id="svg_32"/>
+   <g transform="matrix(7.261, 0, 0, 7.33434, 3, 0)" id="svg_33"/>
+   <g transform="matrix(7.261, 0, 0, 7.33434, 3, 0)" id="svg_34"/>
+   <g transform="matrix(7.261, 0, 0, 7.33434, 3, 0)" id="svg_35"/>
+   <g transform="matrix(7.261, 0, 0, 7.33434, 3, 0)" id="svg_36"/>
+   <g transform="matrix(7.261, 0, 0, 7.33434, 3, 0)" id="svg_37"/>
+  </g>
+  <text transform="matrix(1.65893, 0, 0, 1.74431, -204.187, -169.056)" font-style="italic" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_40" y="297.70683" x="318.07969" stroke-width="0" stroke="#f9f9ef" fill="#f7f2f2">T-logs</text>
+  <text xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_41" y="276" x="321" stroke-width="0" stroke="#f9f9ef" fill="#f7f2f2">&gt;_</text>
+  <text xml:space="preserve" text-anchor="start" font-family="'Courier New', Courier, monospace" font-size="24" id="svg_42" y="71" x="28" stroke-width="0" stroke="#f9f9ef" fill="#f7f2f2">&gt;_</text>
+  <text style="cursor: move;" transform="matrix(1.40881, 0, 0, 1.13814, -14.0483, -12.9314)" xml:space="preserve" text-anchor="start" font-family="Junction, sans-serif" font-size="24" id="svg_43" y="77.58319" x="60.68297" fill-opacity="null" stroke-opacity="null" stroke-width="0" stroke="#f9f9ef" fill="#f7f2f2">T-logs</text>
+ </g>
+</svg>
