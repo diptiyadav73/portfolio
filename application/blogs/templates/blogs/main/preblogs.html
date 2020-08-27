@@ -1,0 +1,54 @@
+{% extends "./blogs/layout/base.html" %} {% block content %} {% include
+    "./blogs/layout/nevbar.html" %}
+<!-- Page Content -->
+<div class="container">
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
+      {% include "./blogs/layout/insidenevbar.html" %}
+    </div>
+  </div>
+  <div class="card border-0 shadow my-5">
+    <div class="card-body p-5">
+      <h1 class="font-weight-light"></h1>
+      <div class="row">
+
+        <div class="col-xl-12">
+          <div class="card">
+            <div class="card-header border-0">
+              <div class="row align-items-center">
+                <div class="col">
+                  <h3 class="mb-0">PreBlogs List</h3>
+                </div>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <!-- Projects table -->
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">Author name</th>
+                    <th scope="col">Serise</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for i in blogs %}
+                  <tr>
+                    <th scope="row">
+                      <a href="{{url_for('blogs.preblogview',id=i.id)}}"> {{i.title}}</a>
+                    </th>
+                    <td>
+                      {{i.series}}
+                    </td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+    </div>
+  </div>
+  {% endblock %}
+</div>
