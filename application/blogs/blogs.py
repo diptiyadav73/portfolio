@@ -55,15 +55,23 @@ def addblogs():
                             author = author,
                             series = series
                             )
-@app.route('/receiver', methods=['POST'])
+@blogs.route('/receiver', methods=['POST'])
 def receiver():
-    blog = json.dumps(request.json)
-    pre = PreBlogs(title=blog['title'],author=blog['author'],series=blog['series'],time=blog['time'],date=blog['date'],tag=tags['tags'],meta=blog['meta'],editor=blog['editor'],slug=blog['slug'])
+    blog = (request.json)
+    # print (blog['title'])
+    pre = PreBlogs(title=request.form['title'],author=request.form['author'],series=request.form['series'],time=request.form['time'],date=request.form['date'],tag=request.form['tags'],meta=request.form['meta'],content=request.form['editor'],slug=request.form['slug'])
     db.session.add(pre)
     db.session.commit()
-    return 'OK', 200
+    return redirect(url_for('blogs.preblogs'))
 
 @blogs.route('/preblogs', methods=['POST','GET'])
 def preblogs():
     blog = PreBlogs.query.all()
     return render_template('/blogs/main/preblogs.html',blogs=blog)
+
+@blogs.route('/preblogview/<id>', methods=['POST','GET'])
+def preblogview(id):
+    blog = PreBlogs.query.filter_by(id=id).all()
+    content = (blog[0].content)
+    print(content)
+    return render_template('/blogs/main/preblogview.html',blogs=blog,json=content)
