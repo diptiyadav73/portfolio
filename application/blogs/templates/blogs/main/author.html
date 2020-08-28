@@ -22,57 +22,29 @@
             </div>
             <div class="table-responsive">
               <!-- Projects table -->
-              <form
-                method="POST"
-                action="{{url_for('blogs.author')}}"
-                style="padding: 20px;"
-              >
+              <form method="POST" action="{{url_for('blogs.author')}}" style="padding: 20px;">
                 <div class="form-group">
                   <label for="exampleFormControlInput1">Author Name</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="Author Name"
-                    name="name"
-                  />
+                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Author Name"
+                    name="name" />
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlInput1">Website</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="Website"
-                    name="website"
-                  />
+                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Website"
+                    name="website" />
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlInput1">Quotes</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="Quotes"
-                    name="quotes"
-                  />
+                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Quotes"
+                    name="quotes" />
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlInput1">Slug</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="Slug"
-                    name="slug"
-                  />
+                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Slug"
+                    name="slug" />
                 </div>
 
-                <input
-                  type="submit"
-                  class="btn btn-primary"
-                  placeholder="Submit"
-                />
+                <input type="submit" class="btn btn-primary" placeholder="Submit" />
               </form>
             </div>
           </div>
@@ -100,7 +72,7 @@
 
                   <tr>
                     <th scope="row">
-                      {{i.name}}
+                      <a href="{{url_for('blogs.authors',id=i.slug)}}">{{i.name}}</a>
                     </th>
                     <td>
                       {{i.website}}

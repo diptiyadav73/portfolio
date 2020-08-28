@@ -31,6 +31,7 @@ class Contact(db.Model):
 class Blogs(db.Model):
     __tablename__ = 'blogs'
     id = db.Column(db.Integer, primary_key=True)
+    headerimg = db.Column(db.String(100))
     title = db.Column(db.String(100))
     series = db.Column(db.String(100))
     author = db.Column(db.String(100))
@@ -40,14 +41,14 @@ class Blogs(db.Model):
     meta = db.Column(db.String(100))
     content = db.Column(db.String(100000))
     img = db.Column(db.String(300))
-    slug = db.Column(db.String(300))
+    slug = db.Column(db.String(300),unique=True)
 
 class Series(db.Model):
     __tablename__ = 'series'
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
     series = db.Column(db.String(100))
-    slug = db.Column(db.String(300))
+    slug = db.Column(db.String(300),unique=True)
 
 class Author(db.Model):
     __tablename__ = 'author'
@@ -55,11 +56,12 @@ class Author(db.Model):
     name = db.Column(db.String(300))
     website = db.Column(db.String(300))
     quotes = db.Column(db.String(300))
-    slug = db.Column(db.String(300))
+    slug = db.Column(db.String(300),unique=True)
     
 class PreBlogs(db.Model):
     __tablename__ = 'preblogs'
     id = db.Column(db.Integer, primary_key=True)
+    headerimg = db.Column(db.String(100))
     title = db.Column(db.String(100))
     series = db.Column(db.String(100))
     author = db.Column(db.String(100))
@@ -69,4 +71,4 @@ class PreBlogs(db.Model):
     meta = db.Column(db.String(100))
     content = db.Column(db.String(100000))
     img = db.Column(db.String(300))
-    slug = db.Column(db.String(300))
+    slug = db.Column(db.String(300),unique=True)

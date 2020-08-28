@@ -11,7 +11,7 @@ import uuid
 import os
 import urllib.request
 from datetime import datetime
-from ..models import Series,Author,PreBlogs
+from ..models import Series,Author,PreBlogs,Blogs
 from werkzeug.utils import secure_filename
 from flask import Blueprint, render_template
 
@@ -20,13 +20,19 @@ blogs = Blueprint('blogs',__name__,
                     template_folder='templates',
                     url_prefix='/blogs'
                     )
-
+IMAGE_DIR = 'application/static/images'
 @blogs.route('/')
 def index():
     return render_template('/blogs/main/index.html')
 
+@blogs.route('/blog/<id>')
+def blog(id):
+    blog = Blogs.query.filter_by(slug=id).first()
+    return render_template('/blogs/main/blogs.html',blogs=blog)
+
 @blogs.route('/staticupload')
 def staticupload():
+
     return render_template('/blogs/main/staticupload.html')
 
 @blogs.route('/author', methods=['POST','GET'])
@@ -38,6 +44,10 @@ def author():
     author = Author.query.all()
     return render_template('/blogs/main/author.html', data=author)
 
+@blogs.route('/author/<id>', methods=['POST','GET'])
+def authors(id):
+    author = Author.query.filter_by(slug=id).first()
+    return render_template('/blogs/main/authordetails.html', data=author)
 @blogs.route('/series', methods=['POST','GET'])
 def series():
     if request.method == 'POST':
@@ -57,9 +67,9 @@ def addblogs():
                             )
 @blogs.route('/receiver', methods=['POST'])
 def receiver():
-    blog = (request.json)
-    # print (blog['title'])
-    pre = PreBlogs(title=request.form['title'],author=request.form['author'],series=request.form['series'],time=request.form['time'],date=request.form['date'],tag=request.form['tags'],meta=request.form['meta'],content=request.form['editor'],slug=request.form['slug'])
+    file = request.files['file']
+    file.save(os.path.join(IMAGE_DIR,request.form['slug']))
+    pre = PreBlogs(headerimg = request.form['slug'], title=request.form['title'],author=request.form['author'],series=request.form['series'],time=request.form['time'],date=request.form['date'],tag=request.form['tags'],meta=request.form['meta'],content=request.form['editor'],slug=request.form['slug'])
     db.session.add(pre)
     db.session.commit()
     return redirect(url_for('blogs.preblogs'))
@@ -71,7 +81,13 @@ def preblogs():
 
 @blogs.route('/preblogview/<id>', methods=['POST','GET'])
 def preblogview(id):
-    blog = PreBlogs.query.filter_by(id=id).all()
-    content = (blog[0].content)
-    print(content)
-    return render_template('/blogs/main/preblogview.html',blogs=blog,json=content)
+    blog = PreBlogs.query.filter_by(slug=id).first()
+    return render_template('/blogs/main/preblogview.html',blogs=blog)
+
+@blogs.route('/publish/<id>', methods=['POST','GET'])
+def publish(id):
+    blog = PreBlogs.query.filter_by(slug=id).first()
+    final = Blogs(headerimg = blog.slug, title=blog.title,author=blog.author,series=blog.series,time=blog.time,date=blog.date,tag=blog.tag,meta=blog.meta,content=blog.content,slug=blog.slug)
+    db.session.add(final)
+    db.session.commit()
+    return redirect(url_for('blogs.blog',id=id))
