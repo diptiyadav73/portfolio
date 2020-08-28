@@ -20,13 +20,14 @@ blogs = Blueprint('blogs',__name__,
                     template_folder='templates',
                     url_prefix='/blogs'
                     )
-
+IMAGE_DIR = 'application/static/images'
 @blogs.route('/')
 def index():
     return render_template('/blogs/main/index.html')
 
 @blogs.route('/staticupload')
 def staticupload():
+
     return render_template('/blogs/main/staticupload.html')
 
 @blogs.route('/author', methods=['POST','GET'])
@@ -61,9 +62,9 @@ def addblogs():
                             )
 @blogs.route('/receiver', methods=['POST'])
 def receiver():
-    blog = (request.json)
-    # print (blog['title'])
-    pre = PreBlogs(title=request.form['title'],author=request.form['author'],series=request.form['series'],time=request.form['time'],date=request.form['date'],tag=request.form['tags'],meta=request.form['meta'],content=request.form['editor'],slug=request.form['slug'])
+    file = request.files['file']
+    file.save(os.path.join(IMAGE_DIR,request.form['slug']))
+    pre = PreBlogs(headerimg = request.form['slug'], title=request.form['title'],author=request.form['author'],series=request.form['series'],time=request.form['time'],date=request.form['date'],tag=request.form['tags'],meta=request.form['meta'],content=request.form['editor'],slug=request.form['slug'])
     db.session.add(pre)
     db.session.commit()
     return redirect(url_for('blogs.preblogs'))
@@ -75,5 +76,5 @@ def preblogs():
 
 @blogs.route('/preblogview/<id>', methods=['POST','GET'])
 def preblogview(id):
-    blog = PreBlogs.query.filter_by(id=id).first()
+    blog = PreBlogs.query.filter_by(slug=id).first()
     return render_template('/blogs/main/preblogview.html',blogs=blog)

@@ -8,9 +8,9 @@
         </div>
     </div>
     <div class="card border-0 shadow my-5">
-        <img src="#" />
+        <img src="{{url_for('static',filename='images/'+blogs.headerimg)}}" style="height: 500px" />
         <div class="card-body p-5">
-            <h1 class="font-weight-light">{{blogs.title}}</h1>
+            <h1 class="font-weight-light justify-content-center">{{blogs.title}}</h1><br>
             <div class="d-flex text-color justify-content-center">
                 <div>
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em"

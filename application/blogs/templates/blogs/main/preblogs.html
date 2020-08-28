@@ -33,7 +33,7 @@
                   {% for i in blogs %}
                   <tr>
                     <th scope="row">
-                      <a href="{{url_for('blogs.preblogview',id=i.id)}}"> {{i.title}}</a>
+                      <a href="{{url_for('blogs.preblogview',id=i.slug)}}"> {{i.title}}</a>
                     </th>
                     <td>
                       {{i.series}}
