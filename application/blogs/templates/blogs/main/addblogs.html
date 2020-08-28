@@ -233,7 +233,7 @@
           <select class="form-control" name="author">
             <option>-----</option>
             {% for i in author %}
-            <option>{{i.name}}</option>
+            <option value="{{i.slug}}">{{i.name}}</option>
             {% endfor %}
           </select>
         </div>

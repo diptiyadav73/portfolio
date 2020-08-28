@@ -38,6 +38,10 @@ def author():
     author = Author.query.all()
     return render_template('/blogs/main/author.html', data=author)
 
+@blogs.route('/author/<id>', methods=['POST','GET'])
+def authors(id):
+    author = Author.query.filter_by(slug=id).first()
+    return render_template('/blogs/main/authordetails.html', data=author)
 @blogs.route('/series', methods=['POST','GET'])
 def series():
     if request.method == 'POST':
@@ -71,7 +75,5 @@ def preblogs():
 
 @blogs.route('/preblogview/<id>', methods=['POST','GET'])
 def preblogview(id):
-    blog = PreBlogs.query.filter_by(id=id).all()
-    content = (blog[0].content)
-    print(content)
-    return render_template('/blogs/main/preblogview.html',blogs=blog,json=content)
+    blog = PreBlogs.query.filter_by(id=id).first()
+    return render_template('/blogs/main/preblogview.html',blogs=blog)

@@ -1,0 +1,48 @@
+{% extends "./blogs/layout/base.html" %} {% block content %} {% include
+    "./blogs/layout/nevbar.html" %}
+<!-- Page Content -->
+<div class="container">
+    <div class="card border-0 shadow my-5">
+        <div class="card-body p-5">
+            {% include "./blogs/layout/insidenevbar.html" %}
+        </div>
+    </div>
+    <div class="card border-0 shadow my-5">
+        <div class="container-fluid mt--6">
+            <div class="row">
+                <div class="col-xl-12 order-xl-2" style="padding: 30px;">
+                    <div class="card card-profile">
+
+                        <div class="card-body pt-0">
+                            <div class="row">
+                                <div class="col-6" style="padding: 35px;">
+                                    <div class="text-center">
+                                        <img src="{{url_for('static',filename='img/DSC_0136.jpg')}}"
+                                            alt="Image placeholder" class="card-img-top">
+                                    </div>
+                                </div>
+                                <div class="col-6" style="padding: 60px;">
+                                    <div class="text-center">
+                                        <h5 class="h3">
+                                            {{data.name}}
+                                        </h5>
+                                        <div class="h5 font-weight-300">
+                                            <a href="{{data.website}}"><i
+                                                    class="ni location_pin mr-2"></i>{{data.website}}</a>
+                                        </div>
+                                        <div class="h5 mt-4">
+                                            <i class="ni business_briefcase-24 mr-2">{{data.quotes}} </i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        {% endblock %}
+    </div>
