@@ -11,7 +11,7 @@ import uuid
 import os
 import urllib.request
 from datetime import datetime
-from ..models import Series,Author,PreBlogs
+from ..models import Series,Author,PreBlogs,Blogs
 from werkzeug.utils import secure_filename
 from flask import Blueprint, render_template
 
@@ -24,6 +24,11 @@ IMAGE_DIR = 'application/static/images'
 @blogs.route('/')
 def index():
     return render_template('/blogs/main/index.html')
+
+@blogs.route('/blog/<id>')
+def blog(id):
+    blog = Blogs.query.filter_by(slug=id).first()
+    return render_template('/blogs/main/blogs.html',blogs=blog)
 
 @blogs.route('/staticupload')
 def staticupload():
@@ -78,3 +83,11 @@ def preblogs():
 def preblogview(id):
     blog = PreBlogs.query.filter_by(slug=id).first()
     return render_template('/blogs/main/preblogview.html',blogs=blog)
+
+@blogs.route('/publish/<id>', methods=['POST','GET'])
+def publish(id):
+    blog = PreBlogs.query.filter_by(slug=id).first()
+    final = Blogs(headerimg = blog.slug, title=blog.title,author=blog.author,series=blog.series,time=blog.time,date=blog.date,tag=blog.tag,meta=blog.meta,content=blog.content,slug=blog.slug)
+    db.session.add(final)
+    db.session.commit()
+    return redirect(url_for('blogs.blog',id=id))

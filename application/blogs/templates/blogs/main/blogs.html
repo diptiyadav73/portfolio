@@ -3,11 +3,6 @@
 <!-- Page Content -->
 <div class="container">
     <div class="card border-0 shadow my-5">
-        <div class="card-body p-5">
-            {% include "./blogs/layout/insidenevbar.html" %}
-        </div>
-    </div>
-    <div class="card border-0 shadow my-5">
         <img src="{{url_for('static',filename='images/'+blogs.headerimg)}}" style="height: 500px" />
         <div class="card-body p-5">
             <h1 class="font-weight-light justify-content-center">{{blogs.title}}</h1><br>
@@ -65,11 +60,7 @@
             <p class="lead mb-0">You've reached the end!</p>
         </div>
     </div>
-    <div class="card border-0 shadow my-5">
-        <div class="card-body p-5">
-            <a href="{{url_for('blogs.publish',id=blogs.slug)}}" class="btn btn-primary">Publish</a>
-        </div>
-    </div>
+
     <div class="row justify-content-center">
         <div class="col-4 related-card">
             <div class="related-post-card">
